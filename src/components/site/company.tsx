@@ -145,7 +145,7 @@ export function Contact() {
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     const lines = [
-      'Hello Sago Techz! 👋',
+      'Hello Sago Techz!',
       '',
       "I'd like to discuss a project:",
       '',
