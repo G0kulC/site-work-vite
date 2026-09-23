@@ -3,7 +3,7 @@ export const site = {
   legalName: 'Sago Techz Pvt. Ltd.',
   tagline: 'Ideas → Code → Impact',
   email: null as string | null,
-  whatsapp: null as string | null,
+  whatsapp: '919843694265' as string | null,
   logo: null as string | null,
   socials: { linkedin: null, github: null, instagram: null } as Record<string, string | null>,
 }

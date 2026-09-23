@@ -38,7 +38,7 @@ export function Navigation() {
       <Button className="mobile-toggle" variant="ghost" size="icon-lg" aria-label={open ? 'Close menu' : 'Open menu'} aria-expanded={open} aria-controls="mobile-navigation" onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</Button>
     </div>
     <AnimatePresence>{open && <motion.nav id="mobile-navigation" aria-label="Mobile navigation" className="mobile-nav liquid-glass" initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.2 }}>
-      <div>{navigation.map((item, i) => <a key={item.label} href={item.href} onClick={() => setOpen(false)}><span className="nav-number">0{i + 1}</span>{item.label}<ArrowUpRight size={17} /></a>)}</div>
+      <div>{navigation.map((item, i) => <a key={item.label} href={item.href} onClick={(e) => { e.preventDefault(); setOpen(false); const id = item.href.replace('#', ''); setTimeout(() => { document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 260); }}><span className="nav-number">0{i + 1}</span>{item.label}<ArrowUpRight size={17} /></a>)}</div>
     </motion.nav>}</AnimatePresence>
   </header>
 }

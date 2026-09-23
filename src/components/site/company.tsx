@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from 'react'
+﻿import { useEffect, useRef, useState } from 'react'
 import confetti from 'canvas-confetti'
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'motion/react'
-import { ArrowRight, ArrowUpRight, Boxes, BrainCircuit, Check, Code2, Compass, Database, HeartHandshake, Lightbulb, PartyPopper, Rocket, ShieldCheck, Sparkles, Target, TrendingUp } from 'lucide-react'
+import { ArrowRight, ArrowUpRight, Boxes, BrainCircuit, Check, Code2, Compass, Database, HeartHandshake, Lightbulb, MessageCircle, PartyPopper, Rocket, ShieldCheck, Sparkles, Target, TrendingUp } from 'lucide-react'
 import { Reveal } from './motion'
 import { cn } from '@/lib/utils'
 import { Brand } from './navigation'
@@ -127,6 +127,116 @@ export function TechStack() {
 }
 
 export function Contact() {
-  const [showDetails, setShowDetails] = useState(false)
-  return <section id="contact" className="contact-section"><div className="container"><div className="contact-box"><div className="contact-orbits" aria-hidden="true"><i /><i /><i /><i /></div><Reveal className="contact-content"><span className="eyebrow light-eyebrow"><span />THE NEXT BIG THING STARTS WITH A CONVERSATION</span><h2>Have an idea?<br />Let&apos;s <WordRotate className="word-rotate" words={['build it.', 'launch it.', 'scale it.']} duration={2600} /></h2><p>Tell us what you&apos;re trying to build. We&apos;ll help turn<br className="desktop-break" /> the idea into a practical technology solution.</p><div className="contact-actions">{site.email ? <a href={`mailto:${site.email}?subject=${encodeURIComponent('Let’s build something — Project enquiry')}`} className={buttonVariants({ variant: 'white', size: 'hero' })}>Start a Conversation <ArrowUpRight data-icon="inline-end" /></a> : <Button variant="white" size="hero" onClick={() => setShowDetails(true)} aria-expanded={showDetails} aria-controls="contact-information">Start a Conversation <ArrowUpRight data-icon="inline-end" /></Button>}{site.email ? <a href={`mailto:${site.email}?subject=${encodeURIComponent('Free consultation request')}`} className="contact-secondary">Get a Free Consultation <ArrowRight size={16} /></a> : <button className="contact-secondary" onClick={() => setShowDetails(true)} aria-expanded={showDetails} aria-controls="contact-information">Get a Free Consultation <ArrowRight size={16} /></button>}</div>{showDetails && <div id="contact-information" className="contact-information" role="status"><Sparkles size={19} /><p>Good things are taking shape. Our direct contact details will be available here soon.</p></div>}<div className="contact-reassurance"><span><Check size={13} />No pressure. Just possibilities.</span><span><Check size={13} />Engineers, not sales pitches.</span></div></Reveal><span className="contact-corner">IDEAS → CODE → IMPACT</span><BorderBeam size={260} duration={9} colorFrom="#6ed5df" colorTo="#2167e8" borderWidth={1.5} /></div></div></section>
+  const [form, setForm] = useState({ name: '', email: '', type: '', budget: '', message: '' })
+  const [submitted, setSubmitted] = useState(false)
+
+  const set = (field: keyof typeof form) =>
+    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
+      setForm(f => ({ ...f, [field]: e.target.value }))
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    const lines = [
+      'Hello Sago Techz! 👋',
+      '',
+      "I'd like to discuss a project:",
+      '',
+      `*Name:* ${form.name}`,
+      `*Email:* ${form.email}`,
+      ...(form.type ? [`*Project Type:* ${form.type}`] : []),
+      ...(form.budget ? [`*Budget:* ${form.budget}`] : []),
+      '',
+      '*Message:*',
+      form.message,
+    ]
+    const text = lines.join('\n')
+    const url = site.whatsapp
+      ? `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(text)}`
+      : `https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`
+    window.open(url, '_blank', 'noopener,noreferrer')
+    setSubmitted(true)
+  }
+
+  return (
+    <section id="contact" className="contact-section">
+      <div className="container">
+        <div className="contact-box">
+          <div className="contact-orbits" aria-hidden="true"><i /><i /><i /><i /></div>
+          <div className="contact-layout">
+            <Reveal className="contact-content">
+              <span className="eyebrow light-eyebrow"><span />THE NEXT BIG THING STARTS WITH A CONVERSATION</span>
+              <h2>Have an idea?<br />Let&apos;s <WordRotate className="word-rotate" words={['build it.', 'launch it.', 'scale it.']} duration={2600} /></h2>
+              <p>Tell us what you&apos;re trying to build. We&apos;ll help turn the idea into a practical technology solution.</p>
+              <div className="contact-reassurance">
+                <span><Check size={13} />No pressure. Just possibilities.</span>
+                <span><Check size={13} />Engineers, not sales pitches.</span>
+                <span><Check size={13} />Reply within 24 hours.</span>
+              </div>
+            </Reveal>
+            <div className="contact-form-wrap">
+              {submitted ? (
+                <div className="contact-success">
+                  <div className="contact-success-icon"><Check size={26} /></div>
+                  <h3>Opening WhatsApp…</h3>
+                  <p>Your details are pre-filled in the message. Just hit send — we&apos;ll reply within 24 hours.</p>
+                  <button
+                    className="contact-reset-btn"
+                    onClick={() => { setSubmitted(false); setForm({ name: '', email: '', type: '', budget: '', message: '' }) }}
+                  >
+                    ← Send another message
+                  </button>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} noValidate>
+                  <div className="contact-form-grid">
+                    <div className="contact-field">
+                      <label htmlFor="cf-name">Your Name</label>
+                      <input id="cf-name" className="contact-input" type="text" placeholder="e.g. Sakthi" value={form.name} onChange={set('name')} required />
+                    </div>
+                    <div className="contact-field">
+                      <label htmlFor="cf-email">Email Address</label>
+                      <input id="cf-email" className="contact-input" type="email" placeholder="you@example.com" value={form.email} onChange={set('email')} required />
+                    </div>
+                  </div>
+                  <div className="contact-form-stack">
+                    <div className="contact-field">
+                      <label htmlFor="cf-type">Project Type</label>
+                      <select id="cf-type" className="contact-select" value={form.type} onChange={set('type')}>
+                        <option value="">Select a category…</option>
+                        <option>Web Application</option>
+                        <option>Mobile App</option>
+                        <option>AI / Automation</option>
+                        <option>Custom Software</option>
+                        <option>Other / Not sure yet</option>
+                      </select>
+                    </div>
+                    <div className="contact-field">
+                      <label htmlFor="cf-budget">Estimated Budget</label>
+                      <select id="cf-budget" className="contact-select" value={form.budget} onChange={set('budget')}>
+                        <option value="">Select a range…</option>
+                        <option>Under ₹5L</option>
+                        <option>₹5L – ₹15L</option>
+                        <option>₹15L – ₹50L</option>
+                        <option>₹50L+</option>
+                        <option>Not sure yet</option>
+                      </select>
+                    </div>
+                    <div className="contact-field">
+                      <label htmlFor="cf-message">Tell us about your project</label>
+                      <textarea id="cf-message" className="contact-textarea" placeholder="What are you trying to build? Any timeline or tech preferences?" rows={4} value={form.message} onChange={set('message')} required />
+                    </div>
+                    <button type="submit" className={cn(buttonVariants({ variant: 'white', size: 'hero' }), 'contact-submit')}>
+                      <MessageCircle size={18} />Send via WhatsApp
+                    </button>
+                  </div>
+                </form>
+              )}
+            </div>
+          </div>
+          <span className="contact-corner">IDEAS → CODE → IMPACT</span>
+          <BorderBeam size={260} duration={9} colorFrom="#6ed5df" colorTo="#2167e8" borderWidth={1.5} />
+        </div>
+      </div>
+    </section>
+  )
 }
