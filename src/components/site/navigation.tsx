@@ -47,8 +47,8 @@ export function Footer() {
   const socialIcons = { linkedin: 'LinkedIn', github: 'GitHub', instagram: 'Instagram' }
   return <footer className="site-footer">
     <div className="container footer-grid">
-      <div className="footer-brand"><Brand light /><p>Small team. Big ideas.<br />Serious technology.</p><span className="footer-note">Thoughtfully built. Built to make a difference.</span></div>
-      <div><h3>Explore</h3><a href="#about">Company</a><a href="#services">Services</a><a href="#solutions">Solutions</a><a href="#projects">Projects</a></div>
+      <div className="footer-brand"><Brand light /><p>Small team. Big ideas.<br />Serious technology.</p><span className="footer-note">AI, software &amp; automation for businesses across Tamil Nadu and India.</span></div>
+      <div><h3>Explore</h3><a href="#about">Company</a><a href="#services">Services</a><a href="#solutions">Solutions</a><a href="#projects">Projects</a><a href="#faq">FAQ</a></div>
       <div><h3>What we do</h3><a href="#services">AI & Generative AI</a><a href="#services">Custom Software</a><a href="#services">Intelligent Automation</a><a href="#services">Cloud & Integrations</a></div>
       <div><h3>Let&apos;s connect</h3><a href="#contact">Start a conversation <ArrowUpRight size={14} /></a>{site.email && <a href={`mailto:${site.email}`}><Mail size={14} />{site.email}</a>}{site.whatsapp && <a href={`https://wa.me/${site.whatsapp}`} target="_blank" rel="noopener noreferrer"><MessageCircle size={14} />WhatsApp</a>}<div className="social-links">{Object.entries(site.socials).filter(([, url]) => url).map(([name, url]) => <a href={url!} key={name} target="_blank" rel="noopener noreferrer">{socialIcons[name as keyof typeof socialIcons]}<ArrowUpRight size={13} /></a>)}</div><a href="#home" className="back-to-top">Back to top <ArrowRight size={14} /></a></div>
     </div>

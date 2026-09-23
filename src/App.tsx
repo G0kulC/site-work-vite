@@ -3,7 +3,7 @@ import { Hero } from '@/components/site/hero'
 import { Intro, Services } from '@/components/site/services'
 import { AIExperience } from '@/components/site/ai-experience'
 import { Projects } from '@/components/site/projects'
-import { WhyUs, Process, Story, TechStack, Contact } from '@/components/site/company'
+import { WhyUs, Process, Story, TechStack, Faq, Contact } from '@/components/site/company'
 import { LiquidGlassFilter, MotionProvider } from '@/components/site/motion'
 
 export default function App() {
@@ -22,6 +22,7 @@ export default function App() {
         <Process />
         <Story />
         <TechStack />
+        <Faq />
         <Contact />
       </main>
       <Footer />

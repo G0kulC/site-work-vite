@@ -1,3 +1,4 @@
+import { SITE_URL } from './seo'
 export const site = {
   name: 'Sago Techz',
   legalName: 'Sago Techz Pvt. Ltd.',
@@ -19,5 +20,5 @@ export const navigation = [
 ]
 
 export function getSiteUrl() {
-  return import.meta.env.VITE_SITE_URL ?? (typeof window !== 'undefined' ? window.location.origin : 'http://localhost:5173')
+  return import.meta.env.VITE_SITE_URL ?? (typeof window !== 'undefined' ? window.location.origin : SITE_URL)
 }

@@ -1,0 +1,30 @@
+# Sago Techz
+
+> Sago Techz Pvt. Ltd. builds AI-powered software, Generative AI and RAG applications, business automation, web platforms and custom digital solutions for businesses across Tamil Nadu and India. Ideas → Code → Impact.
+
+Sago Techz is a small, engineering-led team that works remotely with clients across Tamil Nadu (including Chennai, Coimbatore, Madurai, Tiruchirappalli, Salem and Tiruppur), elsewhere in India and abroad.
+
+## Services
+
+- AI & Generative AI development: AI assistants, AI agents, LLM integrations, Retrieval-Augmented Generation (RAG) systems and custom GenAI solutions.
+- Custom software development: web and mobile applications, SaaS platforms, internal tools and APIs.
+- Business automation & RPA: workflow automation, system-to-system integrations and human-in-the-loop approvals.
+- AI call quality analysis: transcription, quality scorecards, sentiment and compliance signals for customer conversations.
+- Meeting intelligence: transcripts, summaries, decisions and action items from meetings.
+- Cloud & integrations: cloud architecture, deployment, third-party API integrations and monitoring.
+
+## Technology
+
+Python, FastAPI, Django, React, Next.js, TypeScript, PostgreSQL, Docker, AWS, OpenAI and other LLMs, vector databases.
+
+## How we work
+
+Discover → Design → Build → Test → Launch → Grow.
+
+## Links
+
+- Website: https://sagotechz.in/
+- Services: https://sagotechz.in/#services
+- Process: https://sagotechz.in/#process
+- FAQ: https://sagotechz.in/#faq
+- Contact: https://sagotechz.in/#contact

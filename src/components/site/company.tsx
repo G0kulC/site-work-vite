@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState } from 'react'
 import confetti from 'canvas-confetti'
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'motion/react'
-import { ArrowRight, ArrowUpRight, Boxes, BrainCircuit, Check, Code2, Compass, Database, HeartHandshake, Lightbulb, PartyPopper, Rocket, ShieldCheck, Sparkles, Target, TrendingUp } from 'lucide-react'
+import { ArrowRight, ArrowUpRight, Boxes, Plus, BrainCircuit, Check, Code2, Compass, Database, HeartHandshake, Lightbulb, PartyPopper, Rocket, ShieldCheck, Sparkles, Target, TrendingUp } from 'lucide-react'
 import { Reveal } from './motion'
 import { cn } from '@/lib/utils'
 import { Brand } from './navigation'
 import { Button, buttonVariants } from '@/components/ui/button'
 import { site } from '@/lib/site'
+import { faqs } from '@/lib/seo'
 import { BorderBeam } from '@/components/ui/border-beam'
 import { Marquee } from '@/components/ui/marquee'
 import { WordRotate } from '@/components/ui/word-rotate'
@@ -124,6 +125,13 @@ export function TechStack() {
       <Marquee reverse pauseOnHover className="[--duration:38s] [--gap:1.1rem]">{technologies.slice(half).map(tech => <TechPill key={tech.name} tech={tech} />)}</Marquee>
     </div></Reveal>
   </section>
+}
+
+export function Faq() {
+  return <section id="faq" className="faq-section section-space"><div className="container faq-grid">
+    <Reveal className="faq-intro"><span className="eyebrow"><span />QUESTIONS, ANSWERED</span><h2>Good questions.<br /><span className="muted-heading">Straight answers.</span></h2><p>What businesses across Tamil Nadu and India usually ask before we start building together.</p><a href="#contact" className="text-link">Ask us something else <ArrowUpRight size={16} /></a></Reveal>
+    <div className="faq-list">{faqs.map((faq, i) => <Reveal key={faq.question} delay={i * 0.04}><details className="faq-item liquid-glass" open={i === 0}><summary><span className="faq-index">0{i + 1}</span><h3>{faq.question}</h3><span className="faq-toggle" aria-hidden="true"><Plus size={18} /></span></summary><p>{faq.answer}</p></details></Reveal>)}</div>
+  </div></section>
 }
 
 export function Contact() {

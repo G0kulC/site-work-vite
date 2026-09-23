@@ -22,7 +22,7 @@ export function Hero() {
       <div className="hero-copy">
         <div className="hero-eyebrow liquid-glass"><span className="status-dot" /><AnimatedShinyText shimmerWidth={140} className="mx-0 max-w-none text-[#5c778b]/80">SMALL TEAM. BIG IDEAS. SERIOUS TECHNOLOGY.</AnimatedShinyText></div>
         <h1>Turning Ideas Into<br /><AuroraText colors={['#2464e4', '#219de0', '#17b6be', '#6d5dfc']} speed={0.8} className="hero-aurora">Intelligent<br />Technology.</AuroraText></h1>
-        <p>We build AI-powered solutions, software applications, and automation systems that help your business work smarter, faster, and more efficiently.</p>
+        <p>We build AI-powered software, Generative AI applications, and automation systems that help businesses across Tamil Nadu and India work smarter, faster, and more efficiently.</p>
         <div className="hero-actions"><ShimmerButton className="hero-shimmer" background="linear-gradient(120deg, #2167e8, #1d8fe0)" shimmerColor="#bfe8ff" borderRadius="12px" onClick={() => { window.location.hash = 'contact' }}>Start a Project <ArrowUpRight size={17} /></ShimmerButton><a href="#projects" className={cn(buttonVariants({ variant: 'outline', size: 'hero' }))}>Explore Our Work <ArrowRight data-icon="inline-end" /></a></div>
         <div className="hero-footnote"><span className="tiny-line" />Human ingenuity. Intelligent technology.</div>
       </div>
